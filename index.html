@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -243,3 +244,250 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File System Recovery and Optimization Tool</title>
+    <link rel="stylesheet" href="newIndex.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <div class="logo-icon">🗄</div>
+          <h1>FileSystem Recovery & Optimization Tool</h1>
+        </div>
+    </header>
+
+    <div class="container">
+      <div class="dashboard">
+        <div class="sidebar">
+          <h3>System Status</h3>
+          <div class="stats-card">
+            <h4>Disk Usage</h4>
+            <p id="disk-usage">0%</p>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="disk-usage-bar"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+          <div class="stats-card">
+            <h4>Free Space</h4>
+            <p id="free-space">0 KB</p>
+          </div>
+          <div class="stats-card">
+            <h4>Fragmentation</h4>
+            <p id="fragmentation">0%</p>
+          </div>
+          <div class="stats-card">
+            <h4>Cache Hit Ratio</h4>
+            <p id="cache-hit">0%</p>
+          </div>
+          <div class="stats-card">
+            <h4>Total Files</h4>
+            <p id="total-files">0</p>
+          </div>
+          <button
+            class="btn btn-warning"
+            style="width: 100%; margin-top: 10px"
+            id="simulate-crash-btn"
+          >
+            Simulate Crash
+          </button>
+          <button
+            class="btn btn-primary"
+            style="width: 100%; margin-top: 10px"
+            id="check-integrity-btn"
+          >
+            Check Integrity
+          </button>
+        </div>
+
+        <div class="main-content">
+          <div class="panel">
+            <div class="panel-header">File System Explorer</div>
+            <div class="panel-body">
+              <div class="action-buttons">
+                <button class="btn btn-primary" id="create-file-btn">
+                  Create File
+                </button>
+                <button class="btn btn-success" id="upload-file-btn">
+                  Upload File
+                </button>
+                <button class="btn btn-warning" id="optimize-btn">
+                  Optimize File System
+                </button>
+              </div>
+
+              <div id="alerts-container"></div>
+
+              <div class="tabs">
+                <div class="tab active" data-tab="files">Files</div>
+                <div class="tab" data-tab="performance">Performance</div>
+                <div class="tab" data-tab="logs">System Logs</div>
+              </div>
+
+              <div class="tab-content active" id="tab-files">
+                <div class="file-list" id="file-list">
+                  <!-- Files will be displayed here -->
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-performance">
+                <div class="chart-container">
+                  <canvas id="performance-chart"></canvas>
+                </div>
+                <h4>Performance Metrics</h4>
+                <div class="stats-card">
+                  <h4>Read Operations</h4>
+                  <p id="read-ops">0</p>
+                </div>
+                <div class="stats-card">
+                  <h4>Write Operations</h4>
+                  <p id="write-ops">0</p>
+                </div>
+                <div class="stats-card">
+                  <h4>Allocations</h4>
+                  <p id="alloc-ops">0</p>
+                </div>
+                <div class="stats-card">
+                  <h4>Deallocations</h4>
+                  <p id="dealloc-ops">0</p>
+                </div>
+                <div class="stats-card">
+                  <h4>Recovery Operations</h4>
+                  <p id="recovery-ops">0</p>
+                </div>
+              </div>
+
+              <div class="tab-content" id="tab-logs">
+                <div class="form-group">
+                  <textarea
+                    class="form-control textarea-control"
+                    id="system-logs"
+                    readonly
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create File Modal -->
+    <div class="modal" id="create-file-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Create New File</span>
+          <button class="close-btn" id="close-create-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="file-name">File Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="file-name"
+              placeholder="Enter file name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="file-content">File Content</label>
+            <textarea
+              class="form-control textarea-control"
+              id="file-content"
+              placeholder="Enter file content"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="cancel-create">Cancel</button>
+          <button class="btn btn-success" id="confirm-create">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload File Modal -->
+    <div class="modal" id="upload-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>Upload File</span>
+          <button class="close-btn" id="close-upload-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="upload-area" id="drop-area">
+            <div class="upload-icon">📤</div>
+            <p class="upload-text">Drag & drop files here or click to browse</p>
+            <input type="file" id="file-input" style="display: none" />
+          </div>
+          <div class="progress-bar">
+            <div
+              class="progress-fill"
+              id="upload-progress"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" id="cancel-upload">Cancel</button>
+          <button class="btn btn-success" id="confirm-upload">Upload</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- View File Modal -->
+    <div class="modal" id="view-file-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span id="view-file-name">File Name</span>
+          <button class="close-btn" id="close-view-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <textarea
+              class="form-control textarea-control"
+              id="view-file-content"
+              readonly
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="edit-file-btn">Edit</button>
+          <button class="btn btn-danger" id="close-view-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Integrity Check Modal -->
+    <div class="modal" id="integrity-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>File System Integrity Check</span>
+          <button class="close-btn" id="close-integrity-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="integrity-results">
+            <!-- Results will be displayed here -->
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" id="fix-issues-btn">
+            Fix Issues
+          </button>
+          <button class="btn btn-danger" id="close-integrity-btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+  </body>
+</html>
+>>>>>>> 1f4324507636ccdec659e80f74db99f58aa19e16
