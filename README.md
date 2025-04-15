@@ -4,7 +4,7 @@ File System Recovery and Optimization Tool
 # File System Recovery and Optimization Tool
 
 ## Description
-This project implements a **File System Recovery and Optimization Tool** that helps in recovering lost data and optimizing file system performance. It provides functionalities like free-space management, directory structures, file access mechanisms, and more. The tool also simulates real-world scenarios like disk crashes and offers recovery techniques while optimizing file read/write times.
+This project implements a **File System Recovery and Optimization Tool** using **JavaScript**. It helps in recovering lost data and optimizing file system performance. It provides functionalities like free-space management, directory structures, file access mechanisms, and more. The tool also simulates real-world scenarios like disk crashes and offers recovery techniques while optimizing file read/write times.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -26,18 +26,18 @@ This project implements a **File System Recovery and Optimization Tool** that he
     cd file-system-tool
     ```
 
-3. Install required Python dependencies:
+3. Install the required **Node.js** dependencies:
     ```bash
-    pip install -r requirements.txt
+    npm install
     ```
 
-4. Ensure you have **Python 3.x** installed, along with any additional dependencies.
+4. Ensure you have **Node.js** installed. You can download it from [here](https://nodejs.org/).
 
 ## Usage
 
-1. Run the tool by executing the main Python script:
+1. Run the project using **Node.js**:
     ```bash
-    python app.py
+    node app.js
     ```
 
 2. The tool provides the following features:
